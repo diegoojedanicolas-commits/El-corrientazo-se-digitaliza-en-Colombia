@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El corrientazo a domicilio</title>
+<style>
+:root{--bg:#fff;--ink:#111;--muted:#6b6b6b;--line:#ececec;--red:#d0021b;color-scheme:light;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding:34px 22px 48px}
+button{font:inherit;color:inherit;cursor:pointer}
+h1{border-top:4px solid var(--red);padding-top:22px;font:700 30px/1.15 Georgia,"Times New Roman",serif;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 6px;font-size:15px;max-width:60ch}
+.sub.s{font-size:13px;margin-bottom:16px}.sub.s button{background:none;border:0;padding:0;color:var(--red);font-weight:700;text-decoration:underline}
+svg{display:block;width:100%;height:auto}
+.belt{margin:0 0 6px}.belt svg{border-radius:6px}
+.bc{font-size:13px;color:var(--muted);margin:6px 0 0}.bc b{color:var(--ink)}
+.pl{animation:slide 16s linear infinite}
+@keyframes slide{from{transform:translateX(-50px)}to{transform:translateX(690px)}}
+.bt{stroke-dasharray:10 8;animation:bt 1s linear infinite}
+@keyframes bt{to{stroke-dashoffset:-18}}
+.sm{animation:up 2.2s ease-in infinite}
+@keyframes up{from{opacity:.7;transform:translateY(0)}to{opacity:0;transform:translateY(-12px)}}
+.big{font:400 46px/1 Georgia,serif;margin:10px 0 2px}.big small{font-size:20px;color:var(--muted)}
+.bl{color:var(--muted);font-size:14px;margin:0 0 18px;max-width:58ch}
+.tabs{display:flex;border-bottom:1px solid #ccc;margin:14px 0 18px;overflow-x:auto}
+.tab{background:none;border:0;border-bottom:4px solid transparent;padding:10px 14px;font-weight:700;font-size:15px;margin-bottom:-1px;white-space:nowrap}
+.tab[aria-pressed=true]{border-bottom-color:var(--red)}
+.ctl{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:14px;align-items:center}
+.grp{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.pill{background:#fff;border:1px solid var(--ink);border-radius:999px;padding:4px 13px;font-size:13px}
+.pill[aria-pressed=true]{background:var(--ink);color:#fff}
+.rw{display:grid;grid-template-columns:minmax(100px,30%) 1fr;gap:12px;align-items:center;width:100%;background:none;border:0;padding:6px 4px;text-align:left}
+button.rw:hover,button.rw.on{background:#f6f6f6}
+.rw .lb{font-size:13px}.rw.on .lb{font-weight:700}
+.tr{position:relative;display:block;height:16px;background:#f4f4f4;border-radius:3px}
+.fill{position:absolute;left:0;top:0;height:100%;width:0;border-radius:3px;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.v{position:absolute;top:0;font-size:12px;font-weight:700;line-height:16px;white-space:nowrap;transition:left .9s cubic-bezier(.2,.7,.2,1)}
+.note{font-size:13px;color:var(--muted);margin:12px 0 0;max-width:62ch}.note b{color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.hand{transform-origin:110px 110px;transition:transform 2.2s cubic-bezier(.3,.8,.2,1)}
+.s{transition:transform .2s,opacity .2s;cursor:pointer}
+.pie{transform-origin:150px 105px;animation:pin 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pin{from{transform:rotate(-140deg) scale(.5);opacity:0}}
+.dl{list-style:none;margin:6px 0 0;padding:0}
+.dl li{display:flex;align-items:center;gap:8px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.dl i{width:10px;height:10px;border-radius:50%;flex:none}.dl b{margin-left:auto}.dl li.on{font-weight:700}
+.cap{font-size:13px;color:var(--muted);min-height:40px;margin:6px 0 0}
+.wk{height:22px;display:flex;border-radius:3px;overflow:hidden;margin:8px 0 2px;font-size:11px;color:#fff;font-weight:700}
+.wk div{display:flex;align-items:center;padding-left:8px;transition:width 1s cubic-bezier(.2,.7,.2,1);width:0;white-space:nowrap}
+.fl{list-style:none;margin:18px 0 0;padding:0}
+.fl li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px;animation:rise .5s both}
+.fl svg{width:24px;height:24px;flex:none;stroke:var(--red);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.fl b{display:block}.fl span{color:var(--muted);font-size:13px}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+.src{margin-top:30px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+@media (max-width:560px){.two{grid-template-columns:1fr}.two svg{max-width:270px;margin:0 auto}}
+@media (prefers-reduced-motion:reduce){.pl,.bt,.sm,.pie,.fl li,.fill,.v,.hand,.wk div{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>El corrientazo a domicilio</h1>
+  <p class="sub">Lo que dicen las cifras de Rappi sobre los pedidos de almuerzos ejecutivos en Colombia.</p>
+  <p class="sub s">Cifras manejadas por Rappi, según su comunicado del 20 de octubre de 2026.</p>
+  <div class="belt">
+    <svg viewBox="0 0 640 110" role="img" aria-label="Mostrador con platos de almuerzo que avanzan; cada plato representa unos 66.000 pedidos al mes">
+      <rect width="640" height="110" fill="#fff"/>
+      <rect y="72" width="640" height="20" fill="#1f1f1f"/>
+      <line class="bt" x1="0" x2="640" y1="76" y2="76" stroke="#555" stroke-width="2"/>
+      <rect y="92" width="640" height="4" fill="#ddd"/>
+      <g id="pls"></g>
+    </svg>
+    <p class="bc"><b id="by"></b> · cada plato ≈ 66.000 pedidos al mes</p>
+  </div>
+  <div id="app"></div>
+  <div class="src">Fuente: comunicado de prensa de Rappi, 20 de octubre de 2026. Los cálculos propios se señalan.</div>
+</div>
+<script>
+(function(){
+var $=id=>document.getElementById(id),app=$("app"),fm=n=>Math.round(n).toLocaleString("es-CO"),f1=n=>n.toFixed(1).replace(".",",");
+var CT=[["Villavicencio",533],["Ibagué",414],["Santa Marta",346],["Cartagena",306],["Bogotá",239],["Valledupar",238],["Barranquilla",228]];
+var DS=[["Menú del día",27,"#d0021b","El plato que cambia cada día; el cliente lo pide sin saber qué le servirán."],["Res",25,"#111111","Carne asada, desmechada, sobrebarriga y bistec."],["Pollo",16,"#5c5c5c","Casi siempre pechuga; lidera en los platos de menos de $20.000 en Bogotá."],["Cerdo",16,"#9a9a9a","Chuleta y chicharrón."],["Bandeja paisa",6.5,"#e58a93","El plato más contundente, con identidad regional."],["Resto (cálculo propio)",9.5,"#e6e6e6","Lo que falta para 100 %; el comunicado no lo detalla."]];
+var CD={bog:["Bogotá","el plato más vendido es el de una cadena de pollo; detrás, comida casera."],med:["Medellín","el Ejecutivo del Día suma cerca de 18.000 pedidos en el año."],baq:["Barranquilla","la res concentra el 43 % de las unidades; el pollo, el 25 %."]};
+var S={tab:"p",yr:"2026",city:"Villavicencio",ds:0,ct:"bog"},BK="";
+var pill=(a,v,l,on)=>'<button class="pill" data-a="'+a+'" data-v="'+v+'" aria-pressed="'+on+'">'+l+"</button>";
+var tab=(v,l)=>'<button class="tab" data-a="tab" data-v="'+v+'" aria-pressed="'+(S.tab===v)+'">'+l+"</button>";
+function plates(){
+  var n=S.yr==="2026"?10:4,key=n+"";
+  $("by").textContent=S.yr==="2026"?"2026: promedio de más de 660.000 pedidos al mes":"2025: promedio de más de 250.000 pedidos al mes";
+  if(key===BK)return;BK=key;
+  var h="";
+  for(var k=0;k<n;k++){var t=k/n;
+    h+='<g class="pl" style="animation-delay:-'+(t*16).toFixed(2)+"s;transform:translateX("+(-50+t*740).toFixed(0)+'px)"><g transform="translate(0 72)"><ellipse rx="22" ry="5" fill="#fff" stroke="#bbb"/><path d="M-15 -1Q-15 -11 -5 -10Q3 -10 3 -1Z" fill="#fff" stroke="#ccc"/><rect x="5" y="-9" width="12" height="8" rx="3" fill="#b5523b"/><ellipse cx="-5" cy="-3" rx="5" ry="2.4" fill="#e6b800"/><path class="sm" d="M-8 -14q3-4 0-8M2 -14q3-4 0-8" stroke="#bbb" stroke-width="1.5" fill="none" stroke-linecap="round"/></g></g>'}
+  $("pls").innerHTML=h;
+}
+function cu(){
+  document.querySelectorAll(".cu").forEach(el=>{
+    var n=+el.dataset.n,t0=null;
+    if(matchMedia("(prefers-reduced-motion:reduce)").matches){el.textContent=fm(n);return}
+    (function s(t){if(t0===null)t0=t;var k=Math.min(1,(t-t0)/1200);el.textContent=fm(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(s)})(performance.now());
+  });
+}
+function pedidos(){
+  var c=CT.find(x=>x[0]===S.city),r=1000*(1+c[1]/100),y=S.yr==="2026";
+  var h='<div class="ctl"><div class="grp">'+pill("yr","2025","2025",!y)+pill("yr","2026","2026",y)+'</div></div><div class="big"><small>más de </small><span class="cu" data-n="'+(y?660000:250000)+'">0</span><small> al mes</small></div><p class="bl">'+(y?"pedidos mensuales, en promedio, de corrientazos y almuerzos ejecutivos en lo corrido del año: un aumento del 160 % frente a 2025.":"pedidos mensuales, en promedio, en el mismo período de 2025, la base de comparación.")+" Es el crecimiento dentro de la plataforma, no del mercado.</p>";
+  h+='<p class="note" style="margin:0 0 6px"><b>Crecimiento por ciudad</b> (2026 frente a 2025). Es un porcentaje, no el número de pedidos.</p>';
+  h+=CT.map(x=>'<button class="rw'+(x[0]===S.city?" on":"")+'" data-a="city" data-v="'+x[0]+'"><span class="lb">'+x[0]+'</span><span class="tr"><span class="fill" data-w="'+x[1]/600*86+'" style="background:'+(x[0]===S.city?"#d0021b":"#e58a93")+'"></span><span class="v" data-l="'+(x[1]/600*86+1)+'" style="left:0">+'+x[1]+" %</span></span></button>").join("");
+  return h+'<p class="note">Un +'+c[1]+' % en '+c[0]+': con 1.000 pedidos de base serían '+fm(r)+'; con 20.000, '+fm(20000*(1+c[1]/100))+". Sin volúmenes por ciudad, el porcentaje solo no dice dónde se pide más.</p>";
+}
+function pt(th,r){var a=th*Math.PI/180;return[(110+r*Math.sin(a)).toFixed(1),(110-r*Math.cos(a)).toFixed(1)]}
+function reloj(){
+  var th=h=>(h-12)/24*360,R=82,g="",a=pt(th(11),R),b=pt(th(15),R);
+  for(var i=0;i<24;i++){var p=pt(th(i),R-5),q=pt(th(i),R+(i%6===0?8:3));g+='<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="#bbb"/>'}
+  [[0,"0 h"],[6,"6 h"],[12,"12 h"],[18,"18 h"]].forEach(o=>{var p=pt(th(o[0]),R+20);g+='<text x="'+p[0]+'" y="'+(+p[1]+4)+'" text-anchor="middle" font-size="11" fill="#6b6b6b">'+o[1]+"</text>"});
+  return '<svg viewBox="0 0 220 220" role="img" aria-label="Reloj de 24 horas: el 84 % de los pedidos se hace entre las 11:00 y las 2:59 p. m."><circle cx="110" cy="110" r="'+R+'" fill="#fafafa" stroke="#e6e6e6" stroke-width="14"/>'+g+'<path d="M'+a.join(" ")+"A"+R+" "+R+' 0 0 1 '+b.join(" ")+'" fill="none" stroke="#d0021b" stroke-width="14"/><g class="hand" id="hd" style="transform:rotate(-180deg)"><line x1="110" y1="110" x2="110" y2="50" stroke="#111" stroke-width="3" stroke-linecap="round"/></g><circle cx="110" cy="110" r="6" fill="#111"/><text x="110" y="142" text-anchor="middle" font-size="24" font-family="Georgia,serif" fill="#111" id="rt" style="opacity:0;transition:opacity .6s 1.9s">84 %</text><text x="110" y="156" text-anchor="middle" font-size="9" fill="#6b6b6b">de los pedidos</text></svg>';
+}
+function plato(){
+  var a0=-Math.PI/2,s="",R=72,tot=DS.reduce((a,d)=>a+d[1],0);
+  DS.forEach((d,i)=>{var a1=a0+d[1]/tot*2*Math.PI,m=(a0+a1)/2,p=an=>[(150+R*Math.cos(an)).toFixed(1),(105+R*Math.sin(an)).toFixed(1)];
+    s+='<g class="s" data-a="ds" data-v="'+i+'" data-t="translate('+(Math.cos(m)*7).toFixed(1)+"px,"+(Math.sin(m)*7).toFixed(1)+'px)"><path d="M150 105L'+p(a0).join(" ")+"A"+R+" "+R+" 0 "+(a1-a0>Math.PI?1:0)+" 1 "+p(a1).join(" ")+'Z" fill="'+d[2]+'" stroke="#fff" stroke-width="2"/></g>';a0=a1});
+  return '<svg viewBox="0 0 300 210" role="img" aria-label="Plato dividido por tipo de proteína"><circle cx="150" cy="105" r="92" fill="#fff" stroke="#e2e2e2" stroke-width="3"/><circle cx="150" cy="105" r="84" fill="#f7f7f7"/><path d="M30 40v34M24 40v20c0 6 12 6 12 0V40M30 74v70" stroke="#111" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M268 40c-8 10-8 40-2 60h6V40zM272 100v44" stroke="#111" stroke-width="2.4" fill="#111" stroke-linejoin="round" stroke-linecap="round"/><g class="pie">'+s+"</g></svg>";
+}
+function almuerzo(){
+  var d=DS[S.ds];
+  var h='<div class="two"><div>'+reloj()+'<p class="cap" style="text-align:center">84 % de los pedidos, entre las 11:00 a. m. y las 2:59 p. m., con pico a las 12:00 m.</p></div><div>'+plato()+'</div></div>';
+  h+='<div class="two" style="margin-top:6px"><div><p class="note" style="margin:0 0 4px"><b>Tipo de plato</b> (% de los pedidos)</p><ul class="dl">'+DS.map((x,i)=>'<li class="'+(i===S.ds?"on":"")+'" data-a="ds" data-v="'+i+'"><i style="background:'+x[2]+'"></i>'+x[0]+"<b>"+f1(x[1])+" %</b></li>").join("")+'</ul><p class="cap" id="dc">'+d[3]+'</p></div><div><p class="note" style="margin:0 0 4px"><b>Semana</b></p><div class="wk"><div data-w="72" style="background:#111">Lun–vie 72 %</div><div data-w="28" style="background:#d0021b">Fin de sem. 28 %</div></div><p class="cap">Casi lo que daría un reparto uniforme (71 % y 29 %, cálculo propio): el fin de semana pesa como un día más.</p></div></div>';
+  return h;
+}
+function ciudades(){
+  var X={bog:107,med:320,baq:533},on=k=>S.ct===k,c=CD[S.ct];
+  function g(k,inner,name){
+    return '<g class="cg" data-a="ct" data-v="'+k+'" style="cursor:pointer;opacity:'+(on(k)?1:.4)+';transition:opacity .3s"><rect x="'+(X[k]-106)+'" y="0" width="212" height="170" fill="transparent"/>'+inner+(on(k)?'<path transform="translate('+X[k]+' 26)" d="M0 0c-5-7-9-10-9-15a9 9 0 1 1 18 0c0 5-4 8-9 15z" fill="#d0021b"/><circle cx="'+X[k]+'" cy="11" r="3" fill="#fff"/>':"")+'<text x="'+X[k]+'" y="162" text-anchor="middle" font-size="13" font-weight="'+(on(k)?700:400)+'" fill="'+(on(k)?"#d0021b":"#6b6b6b")+'">'+name+"</text></g>";
+  }
+  var bog='<path d="M20 140L85 62L150 140Z" fill="#e4e4e4"/><rect x="80" y="50" width="10" height="12" fill="#111"/><path d="M85 42v8M82 45h6" stroke="#111" stroke-width="2"/><rect x="130" y="82" width="18" height="58" fill="#111"/><rect x="152" y="58" width="22" height="82" fill="#111"/><rect x="178" y="94" width="16" height="46" fill="#111"/>';
+  var med='<path d="M225 140L270 92L340 140Z" fill="#e4e4e4"/><rect x="250" y="118" width="8" height="8" fill="#b5523b"/><rect x="266" y="110" width="8" height="8" fill="#e6b800"/><rect x="282" y="122" width="8" height="8" fill="#b5523b"/><path d="M232 56L408 72" stroke="#111" stroke-width="1.5"/><path d="M308 63v7" stroke="#111"/><rect x="300" y="70" width="16" height="12" rx="2" fill="#d0021b"/><rect x="350" y="80" width="16" height="60" fill="#111"/><rect x="370" y="60" width="20" height="80" fill="#111"/><rect x="394" y="96" width="14" height="44" fill="#111"/>';
+  var baq='<path d="M445 140Q500 62 555 140" fill="none" stroke="#111" stroke-width="4"/><path d="M470 112V140M485 104V140M500 101V140M515 104V140M530 112V140" stroke="#111"/><rect x="572" y="98" width="18" height="42" fill="#111"/><rect x="594" y="82" width="22" height="58" fill="#111"/><path d="M432 148q8-5 16 0t16 0t16 0t16 0t16 0t16 0t16 0t16 0t16 0t16 0t16 0" fill="none" stroke="#9a9a9a" stroke-width="2"/>';
+  return '<div class="ctl"><div class="grp">'+Object.keys(CD).map(k=>pill("ct",k,CD[k][0],on(k))).join("")+'</div></div><svg viewBox="0 0 640 170" role="img" aria-label="Ilustración de tres ciudades: Bogotá con el cerro y la iglesia, Medellín con el metrocable y Barranquilla con el puente sobre el río"><rect y="140" width="640" height="4" fill="#ddd"/>'+g("bog",bog,"Bogotá")+g("med",med,"Medellín")+g("baq",baq,"Barranquilla")+'</svg><p class="note" style="margin:10px 0 0"><b>'+c[0]+":</b> "+c[1]+"</p>";
+}
+function render(){
+  app.innerHTML='<div class="tabs">'+tab("p","Pedidos")+tab("a","Almuerzo")+tab("c","Ciudades")+"</div>"+({p:pedidos,a:almuerzo,c:ciudades})[S.tab]();
+  plates();
+  if(S.tab==="p")cu();
+  if(S.tab==="a"){var hd=$("hd");requestAnimationFrame(()=>requestAnimationFrame(()=>{if(hd)hd.style.transform="rotate(0deg)";var t=$("rt");if(t)t.style.opacity=1}))}
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    app.querySelectorAll(".fill[data-w]").forEach(e=>e.style.width=e.dataset.w+"%");
+    app.querySelectorAll(".v[data-l]").forEach(e=>e.style.left=e.dataset.l+"%");
+    app.querySelectorAll(".wk div[data-w]").forEach(e=>e.style.width=e.dataset.w+"%");
+  }));
+}
+function slice(i){
+  $("dc").textContent=DS[i][3];
+  app.querySelectorAll(".s").forEach(g=>{var on=+g.dataset.v===i;g.style.transform=on?g.dataset.t:"";g.style.opacity=on?1:.45});
+  app.querySelectorAll(".dl li").forEach(l=>l.classList.toggle("on",+l.dataset.v===i));
+}
+document.addEventListener("click",e=>{
+  var b=e.target.closest("[data-a]");if(!b)return;
+  var a=b.dataset.a,v=b.dataset.v;
+  if(a==="ds"){S.ds=+v;slice(S.ds);return}
+  if(a==="tab")S.tab=v;else S[a]=v;
+  render();
+});
+app.addEventListener("mouseover",e=>{var b=e.target.closest('.s[data-a="ds"],.dl li');if(b&&$("dc"))slice(+b.dataset.v)});
+app.addEventListener("mouseleave",()=>{if($("dc"))slice(S.ds)});
+render();
+})();
+</script>
+</body>
+</html>
